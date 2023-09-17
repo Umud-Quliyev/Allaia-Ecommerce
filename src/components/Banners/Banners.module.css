@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Lato:wght@700&family=Roboto:wght@700&display=swap");
+.banners {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+}
+.banners ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.bannerOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bannerOverlay:hover {
+  opacity: 1;
+}
+
+.bannerTitle {
+  color: #fff;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.bannerButton {
+  margin-top: 150px;
+  padding: 10px 20px;
+  background-color: #0d6efd;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s;
+}
+
+.bannerButton:hover {
+  background-color: #ffc107;
+}
+
+.banners li {
+  position: relative;
+  margin-right: 2px;
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+  max-width: 479px;
+  height: auto;
+}
+
+.banners img {
+  width: 100%;
+  height: auto;
+  border: 1px solid #ddd;
+  transition: transform 0.3s ease-in-out;
+  filter: blur(5px);
+}
+
+.banners img:hover {
+  transform: scale(1.05);
+  filter: blur(0);
+}
+
+.bannerTitle {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 30px;
+  font-weight: 900;
+  border-radius: 5px;
+  opacity: 1;
+  transition: opacity 0.3s;
+  font-family: "Roboto", sans-serif;
+}
+
+.banners li:hover .bannerTitle {
+  opacity: 1;
+}
+
+.banners li::before,
+.banners li::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.banners li:hover::before,
+.banners li:hover::after {
+  opacity: 1;
+}
+
+@media (max-width: 769px) {
+  ul {
+    padding: 10px 0px;
+  }
+}/*# sourceMappingURL=Banners.module.css.map */
