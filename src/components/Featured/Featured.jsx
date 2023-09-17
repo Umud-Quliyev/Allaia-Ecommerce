@@ -5,7 +5,7 @@ function Featured() {
   return (
     <div className={style.featured}>
       <div className={style.opacity}>
-        <div>
+        <div className={style.title}>
           <h1>
             ARMOR <br />
             AIR COLOR 720
