@@ -11,6 +11,7 @@
   font-size: 18px;
   overflow: hidden;
   margin-bottom: 100px;
+  font-family: "Roboto", sans-serif;
 }
 .featured .opacity {
   background-color: rgba(0, 0, 0, 0.5);
@@ -27,5 +28,13 @@
   text-transform: uppercase;
   line-height: 1;
   font-size: 36px;
-  font-family: "Roboto", sans-serif;
+}
+.featured .title {
+  padding-top: 100px;
+  width: 80%;
+  margin: 0 auto;
+}
+.featured .title sub {
+  color: gray;
+  text-decoration: line-through;
 }/*# sourceMappingURL=Featured.module.css.map */
