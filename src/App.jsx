@@ -4,6 +4,7 @@ import Carousel from "./components/Carousel/Carousel";
 import Banners from "./components/Banners/Banners";
 import Products from "./components/Products/Products";
 import Featured from "./components/Featured/Featured";
+import Partners from "./components/Partners/Partners";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Banners />
       <Products />
       <Featured />
+      <Partners />
     </>
   );
 }
