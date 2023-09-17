@@ -2,12 +2,12 @@
   background: linear-gradient(to right, rgba(255, 255, 255, 0) 100%);
 }
 
-$animationSpeed: 20s;
+$animationSpeed: 10s;
 
 // Animation
 @keyframes scroll {
   0% {
-    transform: translateX(-250px * 7);
+    transform: translateX(-125px * 7);
   }
   100% {
     transform: translateX(calc(0));
