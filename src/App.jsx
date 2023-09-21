@@ -5,6 +5,7 @@ import Banners from "./components/Banners/Banners";
 import Products from "./components/Products/Products";
 import Featured from "./components/Featured/Featured";
 import Partners from "./components/Partners/Partners";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Products />
       <Featured />
       <Partners />
+      <Footer />
     </>
   );
 }

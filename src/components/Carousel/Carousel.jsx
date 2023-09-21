@@ -1,5 +1,7 @@
+// Carousel.js
+
 import React, { useState, useEffect } from "react";
-import style from "./Carousel.module.css";
+import style from "./Carousel.module.css"; // Carousel bileşeninin CSS modülü
 
 const images = [
   {
@@ -46,6 +48,7 @@ function Carousel() {
 
   return (
     <div className={style.carousel}>
+      <div className={style.opacity}></div>
       <div className={style.slide}>
         <img src={images[currentSlide].url} alt={`Slide ${currentSlide + 1}`} />
         <div className={style.title}>{images[currentSlide].title}</div>

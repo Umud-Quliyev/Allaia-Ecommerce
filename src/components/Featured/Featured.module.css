@@ -2,6 +2,7 @@
 .featured {
   background-image: url("http://www.ansonika.com/allaia/img/featured_home.jpg");
   position: relative;
+  z-index: 2;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
