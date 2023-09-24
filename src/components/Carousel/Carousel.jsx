@@ -1,7 +1,5 @@
-// Carousel.js
-
 import React, { useState, useEffect } from "react";
-import style from "./Carousel.module.css"; // Carousel bileşeninin CSS modülü
+import style from "./Carousel.module.css";
 
 const images = [
   {
@@ -32,28 +30,11 @@ function Carousel() {
     setCurrentSlide((currentSlide + 1) % images.length);
   };
 
-  const handleBulletClick = (index) => {
-    setCurrentSlide(index);
-  };
-
-  const renderBullets = () => {
-    return images.map((_, index) => (
-      <span
-        key={index}
-        className={index === currentSlide ? style.activeBullet : style.bullet}
-        onClick={() => handleBulletClick(index)}
-      ></span>
-    ));
-  };
-
   return (
     <div className={style.carousel}>
       <div className={style.opacity}></div>
-      <div className={style.slide}>
-        <img src={images[currentSlide].url} alt={`Slide ${currentSlide + 1}`} />
-        <div className={style.title}>{images[currentSlide].title}</div>
-      </div>
-      <div className={style.bulletsContainer}>{renderBullets()}</div>
+      <img src={images[currentSlide].url} alt={`Slide ${currentSlide + 1}`} />
+      <div className={style.title}></div>
     </div>
   );
 }
