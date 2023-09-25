@@ -10,7 +10,7 @@
 
   ul {
     display: flex;
-    flex-wrap: wrap;
+    padding: 0;
   }
 }
 .bannerOverlay {
@@ -59,8 +59,6 @@
   margin-right: 2px;
   overflow: hidden;
   text-align: center;
-  width: 100%;
-  max-width: 479px;
   height: auto;
 }
 
@@ -119,5 +117,6 @@
 @media (max-width: 769px) {
   ul {
     padding: 10px 0px;
+    flex-wrap: wrap;
   }
 }

@@ -9,6 +9,7 @@
   height: 500px;
   color: #fff;
   overflow: hidden;
+  margin-bottom: -10px;
 
   img {
     width: 100%;
@@ -23,4 +24,10 @@
   left: 0;
   top: 0;
   z-index: 2;
+}
+
+@media (max-width: 769px) {
+  .carousel {
+    height: auto;
+  }
 }

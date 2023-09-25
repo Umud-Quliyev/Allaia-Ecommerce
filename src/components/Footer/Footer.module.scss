@@ -6,6 +6,11 @@
   background-color: #172134;
   padding: 60px 0 35px 0;
   font-family: "Roboto", sans-serif;
+
+  .dropdown {
+    display: none;
+    margin: 10px;
+  }
 }
 .links {
   font-size: 14px;
@@ -53,6 +58,10 @@
       text-decoration: none;
     }
   }
+}
+
+h3 {
+  text-align: center;
 }
 
 .contacts {
@@ -125,53 +134,55 @@
   }
 
   .icons {
+    text-align: center;
     a {
       color: #fff;
       font-size: 30px;
     }
   }
-
-  hr {
-    border-color: rgba(255, 255, 255, 0.15);
-    margin-top: 5px;
-  }
 }
 
 .copyright {
   display: flex;
+  flex-direction: column;
+  text-align: center;
   justify-content: center;
   background-color: #172134;
-  border-top: 1px solid grey;
   h3 {
     font-size: 14px;
+    opacity: 0.8;
     font-family: "Roboto", sans-serif;
     color: #fff;
     margin-top: 25px;
   }
+
+  hr {
+    border-color: rgba(255, 255, 255, 0.1);
+    margin-top: 5px;
+    width: 85%;
+    margin: 0 auto;
+  }
 }
 
-/* Mobil cihazlar için özel stiller */
 @media screen and (max-width: 768px) {
   .footer {
     flex-direction: column;
     align-items: center;
-  }
 
-  .footer div {
-    width: 100%;
-    margin: 10px 0;
-    text-align: center;
-  }
+    .desktop {
+      display: none;
+    }
 
-  .links h2,
-  .categories h2,
-  .contacts h2,
-  .social h2 {
-    font-size: 18px;
-    margin-top: 20px;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
+    .dropdown {
+      display: block;
+
+      button {
+        padding: 12px;
+        color: #fff;
+        background-color: transparent;
+        border: 1px solid grey;
+      }
+    }
   }
 
   .links ul,
