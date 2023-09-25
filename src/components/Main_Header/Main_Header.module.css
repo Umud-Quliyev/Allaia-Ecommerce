@@ -9,6 +9,7 @@ body {
   align-items: center;
   justify-content: space-between;
   background-color: #004dda;
+  z-index: 3;
 }
 .container img {
   width: 100%;
@@ -72,7 +73,7 @@ body {
   }
   .container ul.menuOpen {
     padding-top: 10px;
-    display: flex;
+    display: block;
   }
   .container ul li {
     padding: 12px;

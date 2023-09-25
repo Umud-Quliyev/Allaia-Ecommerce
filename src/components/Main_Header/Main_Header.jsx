@@ -8,7 +8,6 @@ function Main_Header() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
   return (
     <div className={style.container}>
       <div>
