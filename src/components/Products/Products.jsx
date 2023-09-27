@@ -4,12 +4,13 @@ import { AiFillHeart, AiFillStar, AiOutlineShoppingCart } from "react-icons/ai";
 
 function Products() {
   const [products, setProducts] = useState([]);
+  const [hoveredProduct, setHoveredProduct] = useState(null);
 
   useEffect(() => {
-    fetch("https://dummyjson.com/products?limit=6")
+    fetch("https://651461f4dc3282a6a3cd1852.mockapi.io/api/v1/products")
       .then((res) => res.json())
       .then((data) => {
-        setProducts(data.products);
+        setProducts(data);
       });
   }, []);
 
@@ -21,11 +22,22 @@ function Products() {
         <p>Cum doctus civibus efficiantur in imperdiet deterruisset</p>
       </div>
       <div className={style.products}>
-        {products.map((info) => (
-          <div className={style.product_card}>
+        {products.map((info, index) => (
+          <div className={style.product_card} key={info.id}>
             <div className={style.badge}>Hot</div>
-            <div className={style.product_thumb}>
-              <img src={info.thumbnail} alt="" />
+            <div
+              className={style.product_thumb}
+              onMouseEnter={() => setHoveredProduct(index)}
+              onMouseLeave={() => setHoveredProduct(null)}
+            >
+              <img
+                src={
+                  hoveredProduct === index
+                    ? info.images.image2
+                    : info.images.image1
+                }
+                alt=""
+              />
             </div>
             <div className={style.product_details}>
               <div className={style.d_title}>
@@ -34,15 +46,17 @@ function Products() {
               </div>
 
               <h4>
-                <a href="">{info.title}</a>
+                <a href="">{info.name}</a>
               </h4>
               <p>{info.description}</p>
               <div className={style.product_bottom_details}>
                 <div className={style.product_price}>
-                  {info.price}
-                  <sup>
-                    <small>{info.discountPercentage}</small>
-                  </sup>
+                  <span>
+                    ${info.price}.00
+                    <sup>
+                      <small>{info.discountPercentage}</small>
+                    </sup>
+                  </span>
                 </div>
                 <div className={style.product_links}>
                   <a href="">
@@ -60,4 +74,5 @@ function Products() {
     </div>
   );
 }
+
 export default Products;

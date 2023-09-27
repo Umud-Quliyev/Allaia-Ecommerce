@@ -63,6 +63,18 @@
   padding: 3px 10px;
 }
 
+.product_thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateZ(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.product_card:hover .product_thumb img {
+  transform: scale(1.05);
+}
+
 .product_thumb {
   display: flex;
   align-items: center;
