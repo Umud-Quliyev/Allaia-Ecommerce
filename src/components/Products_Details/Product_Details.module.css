@@ -1,11 +1,7 @@
-.products {
-  display: flex;
-  flex-wrap: wrap;
-}
-.products .details {
+.details {
   text-align: center;
 }
-.products .details button {
+.details button {
   cursor: pointer;
   background: none;
   border: 2px solid;
@@ -16,12 +12,12 @@
   color: #004dda;
   transition: 0.25s;
 }
-.products .details button:hover, .products .details button:focus {
+.details button:hover, .details button:focus {
   border-color: #0029da;
   color: #fff;
 }
-.products .details .moreinfo:hover,
-.products .details .moreinfo:focus {
+.details .moreinfo:hover,
+.details .moreinfo:focus {
   box-shadow: inset 10rem 0 0 0 #0004da;
 }
 
@@ -156,4 +152,4 @@
 }
 .d_title h5 span {
   color: #fbb72c;
-}/*# sourceMappingURL=Products.module.css.map */
+}/*# sourceMappingURL=Product_Details.module.css.map */

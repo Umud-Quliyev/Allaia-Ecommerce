@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import style from "./Main_Header.module.css";
 import { MdFavorite, MdOutlineDarkMode, MdMenu } from "react-icons/md";
+import { Link } from "react-router-dom";
+import Product_Details from "../Products_Details/Product_Details";
+import Products from "../Products/Products";
 
 function Main_Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,10 +14,17 @@ function Main_Header() {
   return (
     <div className={style.container}>
       <div>
-        <img src="http://www.ansonika.com/allaia/img/logo.svg" alt="logo" />
+        <Link to={"/"}>
+          <img src="http://www.ansonika.com/allaia/img/logo.svg" alt="logo" />
+        </Link>
       </div>
       <div>
         <ul className={isMenuOpen ? style.menuOpen : ""}>
+          <li>
+            <Link to={"/"}>
+              <a href="">Home</a>
+            </Link>
+          </li>
           <li>
             <a href="">Category</a>
           </li>
@@ -25,7 +35,9 @@ function Main_Header() {
             <a href="">Blog</a>
           </li>
           <li>
-            <a href="">All Products</a>
+            <Link to={"/Products"}>
+              <a href="">All Products</a>
+            </Link>
           </li>
         </ul>
       </div>

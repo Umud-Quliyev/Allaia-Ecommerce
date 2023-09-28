@@ -6,6 +6,7 @@ import Products from "./components/Products/Products";
 import Featured from "./components/Featured/Featured";
 import Partners from "./components/Partners/Partners";
 import Footer from "./components/Footer/Footer";
+import Top_Products from "./components/Top_Products/Top_Products";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <Main_Header />
       <Carousel />
       <Banners />
-      <Products />
+      <Top_Products />
       <Featured />
       <Partners />
       <Footer />

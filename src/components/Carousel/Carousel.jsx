@@ -43,16 +43,7 @@ function Carousel() {
   return (
     <div className={style.carousel}>
       <div className={style.opacity}></div>
-      {images.map((image, index) => (
-        <img
-          key={index}
-          src={image.url}
-          alt={`Slide ${index + 1}`}
-          style={{
-            transform: `translateX(${100 * (index - currentSlide)}%)`,
-          }}
-        />
-      ))}
+      <img src={images[currentSlide].url} alt={`Slide ${currentSlide + 1}`} />
       <div className={style.title}>
         <h1>{images[currentSlide].title}</h1>
         <p>{images[currentSlide].desc}</p>
