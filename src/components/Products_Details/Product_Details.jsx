@@ -164,7 +164,7 @@ function Product_Details() {
           <div className={style.specifications}>
             <h1>Specifications</h1>
             <table>
-              <tr>
+              <tr className={style.table}>
                 <td>
                   <strong>Color</strong>
                 </td>
@@ -176,7 +176,7 @@ function Product_Details() {
                 </td>
                 <td>150x100x1000</td>
               </tr>
-              <tr>
+              <tr className={style.table}>
                 <td>
                   <strong>Weight</strong>
                 </td>

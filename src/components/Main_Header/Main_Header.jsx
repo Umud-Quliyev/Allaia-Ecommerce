@@ -29,13 +29,13 @@ function Main_Header() {
             <a href="">Category</a>
           </li>
           <li>
-            <a href="">Contact</a>
+            <Link to={"/contact"}>Contact</Link>
           </li>
           <li>
             <a href="">Blog</a>
           </li>
           <li>
-            <Link to={"/Products"}>
+            <Link to={"/products"}>
               <a href="">All Products</a>
             </Link>
           </li>

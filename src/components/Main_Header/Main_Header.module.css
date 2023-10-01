@@ -1,13 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&family=Lato:wght@700&family=Roboto:wght@700&display=swap");
 body {
   margin: 0;
+  font-family: "Roboto";
 }
 
 .container {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: #004dda;
   z-index: 3;
 }
