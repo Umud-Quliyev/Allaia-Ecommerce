@@ -92,4 +92,35 @@
 }
 .drop .map {
   width: 60%;
+}
+
+@media (max-width: 768px) {
+  .contact .contact_title p {
+    padding: 0;
+  }
+  .contact_boxs {
+    flex-wrap: wrap;
+  }
+  .contact_boxs .box {
+    width: 90%;
+  }
+  .drop {
+    flex-wrap: wrap;
+  }
+  .drop .form {
+    width: 95%;
+    margin-bottom: 25px;
+  }
+  .drop .form .form_input {
+    width: 90%;
+  }
+  .drop .form .form_input_message {
+    width: 90%;
+  }
+  .drop .form button {
+    width: 96%;
+  }
+  .drop .map {
+    width: 100%;
+  }
 }/*# sourceMappingURL=Contacts.module.css.map */

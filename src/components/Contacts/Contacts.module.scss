@@ -103,3 +103,44 @@
     width: 60%;
   }
 }
+
+@media (max-width: 768px) {
+  .contact {
+    .contact_title {
+      p {
+        padding: 0;
+      }
+    }
+  }
+  .contact_boxs {
+    flex-wrap: wrap;
+
+    .box {
+      width: 90%;
+    }
+  }
+
+  .drop {
+    flex-wrap: wrap;
+
+    .form {
+      width: 95%;
+      margin-bottom: 25px;
+
+      .form_input {
+        width: 90%;
+      }
+      .form_input_message {
+        width: 90%;
+      }
+
+      button {
+        width: 96%;
+      }
+    }
+
+    .map {
+      width: 100%;
+    }
+  }
+}
