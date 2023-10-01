@@ -8,18 +8,39 @@ import { Link } from "react-router-dom";
 function Products() {
   const [products, setProducts] = useState([]);
   const [hoveredProduct, setHoveredProduct] = useState(null);
+  const [searchResults, setSearchResults] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const handleSearch = (filteredData) => {
+    setSearchResults(filteredData);
+    setCurrentPage(1);
+  };
 
   useEffect(() => {
     fetch("https://651461f4dc3282a6a3cd1852.mockapi.io/api/v1/products")
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => {
+        setProducts(data);
+        setSearchResults(data);
+      });
   }, []);
+
+  useEffect(() => {
+    setSearchResults(products);
+  }, [products]);
+
   return (
     <>
-      <Main_Header />
+      <Main_Header data={products} onSearch={handleSearch} />
 
       <div className={style.products}>
-        {products.map((info, index) => (
+        {searchResults.length === 0 && (
+          <div className={style.not_found}>
+            <h1>Not Found</h1>
+          </div>
+        )}
+
+        {searchResults.map((info, index) => (
           <div className={style.product_card} key={info.id}>
             <div className={style.badge}>Hot</div>
             <div

@@ -1,155 +1,208 @@
-.details {
-  text-align: center;
+.productsdetails {
+  background-color: #f8f8f8;
+  padding-bottom: 200px;
 }
-.details button {
-  cursor: pointer;
-  background: none;
-  border: 2px solid;
-  font: inherit;
-  line-height: 1;
-  margin: 0.5em;
-  padding: 15px 32px;
-  color: #004dda;
-  transition: 0.25s;
+.productsdetails img {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
 }
-.details button:hover, .details button:focus {
-  border-color: #0029da;
-  color: #fff;
-}
-.details .moreinfo:hover,
-.details .moreinfo:focus {
-  box-shadow: inset 10rem 0 0 0 #0004da;
-}
-
-.product_card {
-  width: 390px;
-  position: relative;
-  box-shadow: 0 2px 7px #dfdfdf;
-  margin: 50px auto;
-  background: #fafafa;
-}
-
-.badge {
-  z-index: 1;
+.productsdetails .detailtitle {
+  width: 30%;
   position: absolute;
-  left: 0;
-  top: 20px;
-  text-transform: uppercase;
-  font-size: 13px;
-  font-weight: 700;
-  background: red;
-  color: #fff;
-  padding: 3px 10px;
+  top: 20%;
+  left: 10%;
 }
-
-.product_thumb img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  transform: translateZ(0);
-  transition: transform 0.3s ease-in-out;
+.productsdetails .detailtitle h1 {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
 }
-
-.product_card:hover .product_thumb img {
-  transform: scale(1.05);
+.productsdetails .detailtitle ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
 }
-
-.product_thumb {
+.productsdetails .detailtitle ul li {
   display: flex;
   align-items: center;
-  justify-content: center;
-  height: 300px;
-  background: #f0f0f0;
-  overflow: hidden;
-}
-
-.product_thumb img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-.product_details {
-  padding: 30px;
-}
-
-.product_catagory {
-  display: block;
+  word-wrap: none;
+  padding-right: 8px;
   font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #ccc;
+  color: #555555;
 }
-
-.product_details h4 a {
-  font-weight: 500;
-  display: block;
-  margin-bottom: 18px;
-  text-transform: uppercase;
-  color: #363636;
+.productsdetails .detailtitle ul li svg {
+  color: #777;
+}
+.productsdetails .detailtitle ul li a {
   text-decoration: none;
-  transition: 0.3s;
+  color: #777;
 }
-
-.product_details h4 a:hover {
-  color: #fbb72c;
+.productsdetails img {
+  padding-top: 150px;
 }
-
-.product_details p {
-  font-size: 15px;
-  line-height: 22px;
-  margin-bottom: 18px;
-  color: #999;
+.productsdetails .select {
+  width: 30%;
 }
-
-.product_bottom-details {
-  overflow: hidden;
-  border-top: 1px solid #eee;
-  padding-top: 20px;
+.productsdetails .description {
+  margin-right: 25px;
+  margin-left: 25px;
+  padding-bottom: 60px;
+  display: flex;
+  justify-content: space-around;
 }
-
-.product_bottom-details div {
-  float: left;
-  width: 50%;
-}
-
-.product_price {
+.productsdetails .description h1 {
+  font-family: "Roboto", sans-serif;
   font-size: 18px;
-  color: #fbb72c;
-  font-weight: 600;
+  color: #444444;
+  font-weight: 500;
+  line-height: 36px;
 }
-
-.product_price small {
-  font-size: 80%;
-  font-weight: 400;
-  text-decoration: line-through;
-  display: inline-block;
+.productsdetails .description .desc {
+  width: 40%;
+}
+.productsdetails .description .rating {
+  align-items: center;
+  display: flex;
+}
+.productsdetails .description .rating p {
+  color: #ccc;
+  padding-left: 5px;
+}
+.productsdetails .description .rating svg {
+  color: #ffcc00;
+}
+.productsdetails .color {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.productsdetails .color ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+.productsdetails .color ul li {
+  cursor: pointer;
+}
+.productsdetails .color ul .color1 {
+  background-color: #ffcc00;
+}
+.productsdetails .color ul .color2 {
+  background-color: #ff9933;
+}
+.productsdetails .color ul .color3 {
+  background-color: #ff9966;
+}
+.productsdetails .color ul .color4 {
+  background-color: #ff9999;
+}
+.productsdetails .color ul li {
+  padding: 5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
   margin-right: 5px;
-}
-
-.product_links {
-  text-align: right;
-}
-
-.product_links a {
   display: inline-block;
-  margin-left: 5px;
-  color: #e1e1e1;
-  transition: 0.3s;
-  font-size: 17px;
 }
-
-.product_links a:hover {
-  color: #fbb72c;
+.productsdetails .color ul li a {
+  text-decoration: none;
 }
-
-.d_title {
+.productsdetails .size {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.productsdetails .size .select {
+  padding-left: 20px;
+  width: 200px;
+}
+.productsdetails .price {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-top: 10px;
+  font-family: "Roboto";
 }
-.d_title h5 span {
-  color: #fbb72c;
+.productsdetails .price .add button {
+  width: 179px;
+  border: none;
+  color: #fff;
+  background: #004dda;
+  outline: none;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px 25px;
+  color: #fff;
+  font-weight: 500;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 3px;
+}
+.productsdetails .price .newprice {
+  font-size: 24px;
+  color: #004dda;
+  font-weight: 500;
+}
+.productsdetails .price .percentage {
+  background: #f33;
+  color: #fff;
+  border-radius: 3px;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 600;
+  position: relative;
+  padding: 5px 5px 3px 5px;
+  top: -1px;
+  margin-left: 10px;
+}
+.productsdetails .price .oldprice {
+  padding-left: 5px;
+  color: #999;
+  text-decoration: line-through;
+  display: inline-block;
+  white-space: nowrap;
+  font-weight: 500;
+  font-size: 16px;
+}
+.productsdetails .quantity {
+  display: flex;
+  justify-content: space-between;
+}
+.productsdetails .quantity .counter {
+  display: flex;
+  background-color: #fff;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #777;
+  width: 179px;
+  height: 38px;
+  border-radius: 4px;
+  border-color: hsl(0, 0%, 80%);
+}
+.productsdetails .quantity .counter p {
+  font-size: 20px;
+}
+.productsdetails .quantity .counter button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+.productsdetails .quantity .counter button span {
+  color: #777;
+  font-size: 35px;
+}
+.productsdetails .quantity .counter button :hover {
+  color: #0d6efd;
+}
+.productsdetails .details {
+  display: flex;
+  justify-content: space-around;
+  background-color: #f8f8f8;
+  padding: 60px 0 35px 0;
+}
+.productsdetails .details .detail_desc {
+  flex: 0 0 auto;
+  width: 50%;
 }/*# sourceMappingURL=Product_Details.module.css.map */

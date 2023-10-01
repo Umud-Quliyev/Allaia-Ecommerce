@@ -24,7 +24,6 @@
 .products .details .moreinfo:focus {
   box-shadow: inset 10rem 0 0 0 #0004da;
 }
-
 .product_card {
   width: 390px;
   position: relative;

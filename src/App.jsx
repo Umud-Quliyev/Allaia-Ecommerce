@@ -10,7 +10,7 @@ import Top_Products from "./components/Top_Products/Top_Products";
 
 function App() {
   return (
-    <>
+    <div>
       <Main_Header />
       <Carousel />
       <Banners />
@@ -18,7 +18,7 @@ function App() {
       <Featured />
       <Partners />
       <Footer />
-    </>
+    </div>
   );
 }
 
