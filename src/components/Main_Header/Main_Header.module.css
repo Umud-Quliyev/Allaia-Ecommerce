@@ -28,6 +28,39 @@ body {
   font-family: "Roboto", sans-serif;
   padding: 12px;
 }
+.container .dropbtn {
+  background-color: transparent;
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  padding-bottom: 5px;
+}
+.container .dropdown {
+  position: relative;
+  display: inline-block;
+}
+.container .dropdown_content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.container .dropdown_content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.container .dropdown_content a:hover {
+  background-color: #f1f1f1;
+}
+.container .dropdown:hover .dropdown_content {
+  display: block;
+  margin-top: 5px;
+}
 .container .search_bar {
   position: relative;
   display: flex;
@@ -82,6 +115,7 @@ body {
   .container ul li a {
     color: #fff;
     text-decoration: none;
+    padding: 0 0 0 10px;
   }
   .container .menuIcon {
     display: block;

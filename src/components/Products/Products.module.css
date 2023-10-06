@@ -1,6 +1,15 @@
+.mainn {
+  display: flex;
+}
+
+.sidebarr {
+  width: 20%;
+}
+
 .products {
   display: flex;
   flex-wrap: wrap;
+  width: 80%;
 }
 .products .details {
   text-align: center;
@@ -24,6 +33,7 @@
 .products .details .moreinfo:focus {
   box-shadow: inset 10rem 0 0 0 #0004da;
 }
+
 .product_card {
   width: 390px;
   position: relative;

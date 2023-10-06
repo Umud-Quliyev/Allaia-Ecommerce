@@ -1,6 +1,15 @@
+.mainn {
+  display: flex;
+}
+
+.sidebarr {
+  width: 20%;
+}
+
 .products {
   display: flex;
   flex-wrap: wrap;
+  width: 80%;
 
   .details {
     text-align: center;
@@ -27,9 +36,6 @@
     .moreinfo:focus {
       box-shadow: inset 10rem 0 0 0 adjust-hue(#004dda, 20deg);
     }
-  }
-
-  .not_found {
   }
 }
 

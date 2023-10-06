@@ -7,6 +7,7 @@ import Featured from "./components/Featured/Featured";
 import Partners from "./components/Partners/Partners";
 import Footer from "./components/Footer/Footer";
 import Top_Products from "./components/Top_Products/Top_Products";
+import Sidebar from "./components/Sidebar/Sidebar";
 
 function App() {
   return (

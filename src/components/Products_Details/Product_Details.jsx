@@ -164,30 +164,33 @@ function Product_Details() {
           <div className={style.specifications}>
             <h1>Specifications</h1>
             <table>
-              <tr className={style.table}>
-                <td>
-                  <strong>Color</strong>
-                </td>
-                <td>Blue, Purple</td>
-              </tr>
-              <tr>
-                <td>
-                  <strong>Size</strong>
-                </td>
-                <td>150x100x1000</td>
-              </tr>
-              <tr className={style.table}>
-                <td>
-                  <strong>Weight</strong>
-                </td>
-                <td>0.6kg</td>
-              </tr>
-              <tr>
-                <td>
-                  <strong>Manifacturer</strong>
-                </td>
-                <td>Manifacturer</td>
-              </tr>
+              <tbody>
+                {" "}
+                <tr className={style.table}>
+                  <td>
+                    <strong>Color</strong>
+                  </td>
+                  <td>Blue, Purple</td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Size</strong>
+                  </td>
+                  <td>150x100x1000</td>
+                </tr>
+                <tr className={style.table}>
+                  <td>
+                    <strong>Weight</strong>
+                  </td>
+                  <td>0.6kg</td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Manifacturer</strong>
+                  </td>
+                  <td>Manifacturer</td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
