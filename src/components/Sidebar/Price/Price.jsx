@@ -19,25 +19,25 @@ const Price = ({ handleChange }) => {
         </label>
 
         <Input
-          handleChange={() => handleChange(null, 50, 100, null)}
+          handleChange={() => handleChange(null, 0, 50, null)}
           value={50}
           title="$0 - $50"
           name="test2"
         />
         <Input
-          handleChange={() => handleChange(null, 100, 150, null)}
+          handleChange={() => handleChange(null, 50, 100, null)}
           value={100}
           title="$50 - $100"
           name="test2"
         />
         <Input
-          handleChange={() => handleChange(null, 150, 200, null)}
+          handleChange={() => handleChange(null, 100, 150, null)}
           value={150}
           title="$100 - $150"
           name="test2"
         />
         <Input
-          handleChange={() => handleChange(null, 200, null, null)}
+          handleChange={() => handleChange(null, 150, null, null)}
           value={200}
           title="Over $150"
           name="test2"
