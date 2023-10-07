@@ -22,7 +22,6 @@ function Products() {
 
   const handleSearch = (filteredData) => {
     setSearchResults(filteredData);
-    setCurrentPage(1);
   };
 
   useEffect(() => {
@@ -39,6 +38,10 @@ function Products() {
     console.log("Filters:", filters);
     setSearchResults(filterProducts());
   }, [products, filters]);
+
+  useEffect(() => {
+    setSearchResults(products);
+  }, [products]);
 
   const handleFilterChange = (category, minPrice, maxPrice, color) => {
     setFilters({

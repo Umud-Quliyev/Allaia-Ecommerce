@@ -1,14 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./Main_Header.module.css";
 import { MdFavorite, MdOutlineDarkMode, MdMenu } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Product_Details from "../Products_Details/Product_Details";
 import Products from "../Products/Products";
 import Modal from "react-modal";
+import { useDebounce } from "usehooks-ts";
 
-function Main_Header() {
+function Main_Header(props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [data, setData] = useState([]);
+  const [inputText, setInputText] = useState("");
+  const debouncedInputText = useDebounce(inputText, 500);
+
+  const inputHandler = (e) => {
+    const lowerCase = e.target.value.toLowerCase();
+    setInputText(lowerCase);
+  };
+
+  useEffect(() => {
+    fetch("https://651461f4dc3282a6a3cd1852.mockapi.io/api/v1/products")
+      .then((res) => res.json())
+      .then((info) => setData(info));
+  }, []);
+
+  useEffect(() => {
+    const filteredData = data.filter((el) => {
+      if (debouncedInputText === "") {
+        return true;
+      }
+      return (
+        el.name.toLowerCase().includes(debouncedInputText) ||
+        el.description.toLowerCase().includes(debouncedInputText)
+      );
+    });
+    props.onSearch(filteredData);
+  }, [debouncedInputText, data]);
 
   const customStyles = {
     content: {
@@ -61,7 +89,11 @@ function Main_Header() {
         </ul>
       </div>
       <div className={style.search_bar}>
-        <input type="text" placeholder="Search Products" />
+        <input
+          type="text"
+          placeholder="Search Products"
+          onChange={inputHandler}
+        />
         <span>
           <MdFavorite onClick={openModal} />
           <Modal

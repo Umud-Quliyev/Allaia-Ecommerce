@@ -8,16 +8,20 @@ import Partners from "./components/Partners/Partners";
 import Footer from "./components/Footer/Footer";
 import Top_Products from "./components/Top_Products/Top_Products";
 import Sidebar from "./components/Sidebar/Sidebar";
+import Latest from "./components/Latest/Latest";
 
 function App() {
+  function handleSearch(filteredData) {}
+
   return (
     <div>
-      <Main_Header />
+      <Main_Header onSearch={handleSearch} />
       <Carousel />
       <Banners />
       <Top_Products />
       <Featured />
       <Partners />
+      <Latest />
       <Footer />
     </div>
   );

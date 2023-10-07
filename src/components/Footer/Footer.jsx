@@ -41,30 +41,30 @@ function Footer() {
             </ul>
           </div>
           <div className={style.dropdown}>
-            <Accordion>
-              <AccordionItem header="QUICK LINKS">
-                <ul>
-                  <li>
-                    <a href="">About Us</a>
-                  </li>
-                  <li>
-                    <a href="">Faq</a>
-                  </li>
-                  <li>
-                    <a href="">Help</a>
-                  </li>
-                  <li>
-                    <a href="">My Account</a>
-                  </li>
-                  <li>
-                    <a href="">Blog</a>
-                  </li>
-                  <li>
-                    <a href="">Contacts</a>
-                  </li>
-                </ul>
-              </AccordionItem>
-            </Accordion>
+            <div className={style.dropdown_container}>
+              <input type="checkbox" id={style.drop} />
+              <label htmlFor={style.drop}>QUICK LINKS</label>
+              <ul className={style.content}>
+                <li>
+                  <a href="">About Us</a>
+                </li>
+                <li>
+                  <a href="">Faq</a>
+                </li>
+                <li>
+                  <a href="">Help</a>
+                </li>
+                <li>
+                  <a href="">My Account</a>
+                </li>
+                <li>
+                  <a href="">Blog</a>
+                </li>
+                <li>
+                  <a href="">Contacts</a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         <div className={style.categories}>
@@ -92,30 +92,30 @@ function Footer() {
             </ul>
           </div>
           <div className={style.dropdown}>
-            <Accordion>
-              <AccordionItem header="CATEGORIES">
-                <ul>
-                  <li>
-                    <a href="">Clothes</a>
-                  </li>
-                  <li>
-                    <a href="">Electronics</a>
-                  </li>
-                  <li>
-                    <a href="">Furniture</a>
-                  </li>
-                  <li>
-                    <a href="">Glasses</a>
-                  </li>
-                  <li>
-                    <a href="">Shoes</a>
-                  </li>
-                  <li>
-                    <a href="">Watches</a>
-                  </li>
-                </ul>
-              </AccordionItem>
-            </Accordion>
+            <div className={style.dropdown_container}>
+              <input type="checkbox" id={style.drop2} />
+              <label htmlFor={style.drop2}>CATEGORIES</label>
+              <ul className={style.content}>
+                <li>
+                  <a href="">Clothes</a>
+                </li>
+                <li>
+                  <a href="">Electronics</a>
+                </li>
+                <li>
+                  <a href="">Furniture</a>
+                </li>
+                <li>
+                  <a href="">Glasses</a>
+                </li>
+                <li>
+                  <a href="">Shoes</a>
+                </li>
+                <li>
+                  <a href="">Watches</a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         <div className={style.contacts}>
@@ -146,33 +146,33 @@ function Footer() {
             </ul>
           </div>
           <div className={style.dropdown}>
-            <Accordion>
-              <AccordionItem header="CONTACTS">
-                <ul>
-                  <li>
-                    <span>
-                      <AiTwotoneHome />
-                    </span>
-                    <h3>
-                      97845 Baker st. 567 <br />
-                      Los Angeles - US
-                    </h3>
-                  </li>
-                  <li>
-                    <span>
-                      <BsFillTelephoneFill />
-                    </span>
-                    <h3>+94 423-23-221</h3>
-                  </li>
-                  <li>
-                    <span>
-                      <AiOutlineMail />
-                    </span>
-                    <h3>info@allaia.com</h3>
-                  </li>
-                </ul>
-              </AccordionItem>
-            </Accordion>
+            <div className={style.dropdown_container}>
+              <input type="checkbox" id={style.drop3} />
+              <label htmlFor={style.drop3}>CONTACTS</label>
+              <ul className={style.content}>
+                <li>
+                  <span>
+                    <AiTwotoneHome />
+                  </span>
+                  <h3>
+                    97845 Baker st. 567 <br />
+                    Los Angeles - US
+                  </h3>
+                </li>
+                <li>
+                  <span>
+                    <BsFillTelephoneFill />
+                  </span>
+                  <h3>+94 423-23-221</h3>
+                </li>
+                <li>
+                  <span>
+                    <AiOutlineMail />
+                  </span>
+                  <h3>info@allaia.com</h3>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         <div className={style.social}>
