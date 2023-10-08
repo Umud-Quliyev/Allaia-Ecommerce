@@ -114,11 +114,11 @@ function Main_Header(props) {
                     </li>
                   ))
                 ) : (
-                  <li>No favorite products yet.</li>
+                  <p>No favorite products yet.</p>
                 )}
               </ul>
 
-              <button onClick={closeFavoriteModal}>Kapat</button>
+              <button onClick={closeFavoriteModal}>Close</button>
             </div>
           </Modal>
           <MdOutlineDarkMode />
