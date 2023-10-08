@@ -165,4 +165,13 @@
 }
 .d_title h5 span {
   color: #fbb72c;
+}
+
+@media (max-width: 768px) {
+  .sidebarr {
+    display: none;
+  }
+  .products {
+    width: 100%;
+  }
 }/*# sourceMappingURL=Products.module.css.map */

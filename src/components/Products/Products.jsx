@@ -11,6 +11,7 @@ function Products() {
   const [hoveredProduct, setHoveredProduct] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isFavorite, setIsFavorite] = useState(false);
   const [filters, setFilters] = useState({
     category: null,
     price: {
@@ -34,14 +35,8 @@ function Products() {
   }, []);
 
   useEffect(() => {
-    console.log("Products:", products);
-    console.log("Filters:", filters);
     setSearchResults(filterProducts());
   }, [products, filters]);
-
-  useEffect(() => {
-    setSearchResults(products);
-  }, [products]);
 
   const handleFilterChange = (category, minPrice, maxPrice, color) => {
     setFilters({
@@ -49,6 +44,19 @@ function Products() {
       price: { "min-value": minPrice, "max-value": maxPrice },
       color,
     });
+  };
+  const [favorites, setFavorites] = useState([]);
+  const [isFavoriteModalOpen, setIsFavoriteModalOpen] = useState(false);
+
+  const handleAddToFavorites = (product) => {
+    if (!favorites.some((fav) => fav.id === product.id)) {
+      setFavorites([...favorites, product]);
+      setIsFavorite(true);
+    } else {
+      const updatedFavorites = favorites.filter((fav) => fav.id !== product.id);
+      setFavorites(updatedFavorites);
+      setIsFavorite(false);
+    }
   };
 
   const filterProducts = () => {
@@ -60,7 +68,7 @@ function Products() {
       );
     }
 
-    if (filters.color) {
+    if (filters.color !== null) {
       filteredData = filteredData.filter(
         (product) => product.color === filters.color
       );
@@ -88,7 +96,11 @@ function Products() {
 
   return (
     <>
-      <Main_Header data={products} onSearch={handleSearch} />
+      <Main_Header
+        data={products}
+        onSearch={handleSearch}
+        favorites={favorites}
+      />
 
       <div className={style.mainn}>
         <div className={style.sidebarr}>
@@ -104,7 +116,6 @@ function Products() {
 
           {searchResults.map((info, index) => (
             <div className={style.product_card} key={info.id}>
-              <div className={style.badge}>Hot</div>
               <div
                 className={style.product_thumb}
                 onMouseEnter={() => setHoveredProduct(index)}
@@ -139,7 +150,15 @@ function Products() {
                     </span>
                   </div>
                   <div className={style.product_links}>
-                    <a href="">
+                    <a
+                      href="#"
+                      onClick={() => handleAddToFavorites(info)}
+                      style={{
+                        color: favorites.some((fav) => fav.id === info.id)
+                          ? "#fbb72c"
+                          : "#e1e1e1",
+                      }}
+                    >
                       <AiFillHeart />
                     </a>
                     <a href="">

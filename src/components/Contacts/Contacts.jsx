@@ -7,9 +7,10 @@ import { FaMapMarkedAlt } from "react-icons/fa";
 import { BsBoxSeam } from "react-icons/bs";
 
 function Contacts() {
+  function handleSearch(filteredData) {}
   return (
     <div>
-      <Main_Header />
+      <Main_Header onSearch={handleSearch} />
 
       <div className={style.contact}>
         <div>
@@ -71,9 +72,10 @@ function Contacts() {
             <iframe
               width="100%"
               height="370"
-              frameborder="0"
-              marginheight="0"
-              marginwidth="0"
+              frameB
+              order="0"
+              marginHeight="0"
+              marginWidth="0"
               src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q=Baku%2028%20mall+(Projects)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
             >
               <a href="https://www.maps.ie/population/">

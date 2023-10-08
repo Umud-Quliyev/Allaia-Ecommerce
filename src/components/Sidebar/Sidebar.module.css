@@ -1,6 +1,5 @@
 .sidebar {
   width: 90%;
-  position: sticky;
   height: 100%;
   border-right: 2px solid #e5e5e5;
   z-index: 3;
@@ -15,4 +14,10 @@
 
 .logo_container h1 {
   margin-top: 1.3rem;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
 }

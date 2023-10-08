@@ -13,6 +13,7 @@ function Main_Header(props) {
   const [data, setData] = useState([]);
   const [inputText, setInputText] = useState("");
   const debouncedInputText = useDebounce(inputText, 500);
+  const [favoriteModalIsOpen, setFavoriteModalIsOpen] = useState(false);
 
   const inputHandler = (e) => {
     const lowerCase = e.target.value.toLowerCase();
@@ -40,6 +41,8 @@ function Main_Header(props) {
 
   const customStyles = {
     content: {
+      backgroundColor: "#fff",
+      zIndex: "1000",
       width: "90%",
       height: "450px",
       top: "50%",
@@ -51,13 +54,13 @@ function Main_Header(props) {
     },
   };
 
-  function openModal() {
-    setIsOpen(true);
-  }
+  const openFavoriteModal = () => {
+    setFavoriteModalIsOpen(true);
+  };
 
-  function closeModal() {
-    setIsOpen(false);
-  }
+  const closeFavoriteModal = () => {
+    setFavoriteModalIsOpen(false);
+  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -95,14 +98,29 @@ function Main_Header(props) {
           onChange={inputHandler}
         />
         <span>
-          <MdFavorite onClick={openModal} />
+          <MdFavorite onClick={openFavoriteModal} />
           <Modal
-            isOpen={modalIsOpen}
-            onRequestClose={closeModal}
+            isOpen={favoriteModalIsOpen}
+            onRequestClose={closeFavoriteModal}
             style={customStyles}
-            contentLabel="Example Modal"
-            onFavoritedResort="handlFavoriteResort"
-          ></Modal>
+          >
+            <div>
+              <h2>Favorite Products</h2>
+              <ul>
+                {props.favorites && props.favorites.length > 0 ? (
+                  props.favorites.map((favoriteProduct, index) => (
+                    <li key={index}>
+                      {favoriteProduct.name} - {favoriteProduct.description}
+                    </li>
+                  ))
+                ) : (
+                  <li>No favorite products yet.</li>
+                )}
+              </ul>
+
+              <button onClick={closeFavoriteModal}>Kapat</button>
+            </div>
+          </Modal>
           <MdOutlineDarkMode />
           <MdMenu onClick={toggleMenu} className={style.menuIcon} />
         </span>

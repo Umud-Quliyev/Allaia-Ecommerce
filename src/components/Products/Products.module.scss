@@ -172,3 +172,12 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .sidebarr {
+    display: none;
+  }
+  .products {
+    width: 100%;
+  }
+}

@@ -48,9 +48,11 @@ function Product_Details() {
     });
   }
 
+  function handleSearch(filteredData) {}
+
   return (
     <>
-      <Main_Header />
+      <Main_Header onSearch={handleSearch} />
 
       <div className={style.productsdetails}>
         <div className={style.detailtitle}>
@@ -165,7 +167,6 @@ function Product_Details() {
             <h1>Specifications</h1>
             <table>
               <tbody>
-                {" "}
                 <tr className={style.table}>
                   <td>
                     <strong>Color</strong>
