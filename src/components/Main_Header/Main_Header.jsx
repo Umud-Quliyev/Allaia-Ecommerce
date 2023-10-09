@@ -6,12 +6,14 @@ import Product_Details from "../Products_Details/Product_Details";
 import Products from "../Products/Products";
 import Modal from "react-modal";
 import { useDebounce } from "usehooks-ts";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 function Main_Header(props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [data, setData] = useState([]);
   const [inputText, setInputText] = useState("");
+  const [hoveredProduct, setHoveredProduct] = useState(null);
   const debouncedInputText = useDebounce(inputText, 500);
   const [favoriteModalIsOpen, setFavoriteModalIsOpen] = useState(false);
 
@@ -106,22 +108,77 @@ function Main_Header(props) {
           >
             <div>
               <h2>Favorite Products</h2>
-              <ul>
+              <div className={style.favoriteproduct}>
                 {props.favorites && props.favorites.length > 0 ? (
                   props.favorites.map((favoriteProduct, index) => (
-                    <li key={index}>
-                      {favoriteProduct.name} - {favoriteProduct.description}
-                    </li>
+                    <div
+                      className={style.product_card}
+                      key={favoriteProduct.id}
+                    >
+                      <div
+                        className={style.product_thumb}
+                        onMouseEnter={() => setHoveredProduct(index)}
+                        onMouseLeave={() => setHoveredProduct(null)}
+                      >
+                        <img
+                          src={
+                            hoveredProduct === index
+                              ? favoriteProduct.images.image2
+                              : favoriteProduct.images.image1
+                          }
+                          alt=""
+                        />
+                      </div>
+                      <div className={style.product_details}>
+                        <div className={style.d_title}>
+                          <span className={style.product_catagory}>
+                            {favoriteProduct.brand}
+                          </span>
+                          <p>Ratings: {favoriteProduct.rating}</p>
+                        </div>
+
+                        <h4>
+                          <a href="">{favoriteProduct.name}</a>
+                        </h4>
+                        <p>{favoriteProduct.description}</p>
+                        <div className={style.product_bottom_details}>
+                          <div className={style.product_price}>
+                            <span>
+                              ${favoriteProduct.price}.00
+                              <sup>
+                                <small>
+                                  {favoriteProduct.discountPercentage}
+                                </small>
+                              </sup>
+                            </span>
+                          </div>
+                          <div className={style.product_links}>
+                            <a href="">
+                              <AiOutlineShoppingCart />
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                      <div className={style.details}>
+                        <Link to={`/product_detail/${favoriteProduct.id}`}>
+                          <button className={style.moreinfo}>
+                            More info..
+                          </button>
+                        </Link>
+                      </div>
+                    </div>
                   ))
                 ) : (
                   <p>No favorite products yet.</p>
                 )}
-              </ul>
-
-              <button onClick={closeFavoriteModal}>Close</button>
+              </div>
             </div>
+            <button onClick={closeFavoriteModal} className={style.close}>
+              Close
+            </button>
           </Modal>
           <MdOutlineDarkMode />
+          <AiOutlineShoppingCart />
           <MdMenu onClick={toggleMenu} className={style.menuIcon} />
         </span>
       </div>

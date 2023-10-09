@@ -174,4 +174,15 @@
   .products {
     width: 100%;
   }
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
 }/*# sourceMappingURL=Products.module.css.map */

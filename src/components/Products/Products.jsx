@@ -12,6 +12,7 @@ function Products() {
   const [searchResults, setSearchResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isFavorite, setIsFavorite] = useState(false);
+  const itemsPerPage = 3;
   const [filters, setFilters] = useState({
     category: null,
     price: {
@@ -23,6 +24,7 @@ function Products() {
 
   const handleSearch = (filteredData) => {
     setSearchResults(filteredData);
+    setCurrentPage(1);
   };
 
   useEffect(() => {
@@ -45,6 +47,7 @@ function Products() {
       color,
     });
   };
+
   const [favorites, setFavorites] = useState([]);
   const [isFavoriteModalOpen, setIsFavoriteModalOpen] = useState(false);
 
@@ -94,6 +97,18 @@ function Products() {
     return filteredData;
   };
 
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const displayedProducts = searchResults.slice(startIndex, endIndex);
+
+  const totalPages = Math.ceil(searchResults.length / itemsPerPage);
+
+  const handlePageChange = (newPage) => {
+    if (newPage >= 1 && newPage <= totalPages) {
+      setCurrentPage(newPage);
+    }
+  };
+
   return (
     <>
       <Main_Header
@@ -108,13 +123,13 @@ function Products() {
         </div>
 
         <div className={style.products}>
-          {searchResults.length === 0 && (
+          {displayedProducts.length === 0 && (
             <div className={style.not_found}>
               <h1>Not Found</h1>
             </div>
           )}
 
-          {searchResults.map((info, index) => (
+          {displayedProducts.map((info, index) => (
             <div className={style.product_card} key={info.id}>
               <div
                 className={style.product_thumb}
@@ -175,6 +190,33 @@ function Products() {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className={style.pagination}>
+        <a
+          href="#"
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          &laquo; Previous
+        </a>
+        {Array.from({ length: totalPages }).map((_, index) => (
+          <a
+            href="#"
+            key={index}
+            onClick={() => handlePageChange(index + 1)}
+            className={currentPage === index + 1 ? "active" : ""}
+          >
+            {index + 1}
+          </a>
+        ))}
+        <a
+          href="#"
+          onClick={() => handlePageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          Next &raquo;
+        </a>
       </div>
 
       <Footer />
