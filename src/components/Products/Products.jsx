@@ -12,6 +12,8 @@ function Products() {
   const [searchResults, setSearchResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [showSnackbar, setShowSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
   const itemsPerPage = 3;
   const [filters, setFilters] = useState({
     category: null,
@@ -21,11 +23,6 @@ function Products() {
     },
     color: null,
   });
-
-  const handleSearch = (filteredData) => {
-    setSearchResults(filteredData);
-    setCurrentPage(1);
-  };
 
   useEffect(() => {
     fetch("https://651461f4dc3282a6a3cd1852.mockapi.io/api/v1/products")
@@ -40,26 +37,49 @@ function Products() {
     setSearchResults(filterProducts());
   }, [products, filters]);
 
+  const handleSearch = (filteredData) => {
+    setSearchResults(filteredData);
+    setCurrentPage(1);
+  };
+
+  const [favorites, setFavorites] = useState([]);
+
+  const handleAddToFavorites = (product) => {
+    if (!favorites.some((fav) => fav.id === product.id)) {
+      setFavorites([...favorites, product]);
+      setIsFavorite(true);
+      setSnackbarMessage("Product added to favorites");
+      setShowSnackbar(true);
+    } else {
+      const updatedFavorites = favorites.filter((fav) => fav.id !== product.id);
+      setFavorites(updatedFavorites);
+      setIsFavorite(false);
+      setSnackbarMessage("Product removed from favorites");
+      setShowSnackbar(true);
+    }
+  };
+
+  const [addedCart, setAddedCart] = useState([]);
+
+  const handleAddToAddedCart = (product) => {
+    if (!addedCart.some((add) => add.id === product.id)) {
+      setAddedCart([...addedCart, product]);
+      setSnackbarMessage("Product added to cart");
+      setShowSnackbar(true);
+    } else {
+      const updatedAdded = addedCart.filter((add) => add.id !== product.id);
+      setAddedCart(updatedAdded);
+      setSnackbarMessage("Product removed from cart");
+      setShowSnackbar(true);
+    }
+  };
+
   const handleFilterChange = (category, minPrice, maxPrice, color) => {
     setFilters({
       category,
       price: { "min-value": minPrice, "max-value": maxPrice },
       color,
     });
-  };
-
-  const [favorites, setFavorites] = useState([]);
-  const [isFavoriteModalOpen, setIsFavoriteModalOpen] = useState(false);
-
-  const handleAddToFavorites = (product) => {
-    if (!favorites.some((fav) => fav.id === product.id)) {
-      setFavorites([...favorites, product]);
-      setIsFavorite(true);
-    } else {
-      const updatedFavorites = favorites.filter((fav) => fav.id !== product.id);
-      setFavorites(updatedFavorites);
-      setIsFavorite(false);
-    }
   };
 
   const filterProducts = () => {
@@ -115,6 +135,7 @@ function Products() {
         data={products}
         onSearch={handleSearch}
         favorites={favorites}
+        addedCart={addedCart}
       />
 
       <div className={style.mainn}>
@@ -176,7 +197,17 @@ function Products() {
                     >
                       <AiFillHeart />
                     </a>
-                    <a href="">
+                    <a
+                      href="#"
+                      onClick={(e) => {
+                        handleAddToAddedCart(info);
+                      }}
+                      style={{
+                        color: addedCart.some((add) => add.id === info.id)
+                          ? "#fbb72c"
+                          : "#e1e1e1",
+                      }}
+                    >
                       <AiOutlineShoppingCart />
                     </a>
                   </div>
@@ -217,6 +248,35 @@ function Products() {
         >
           Next &raquo;
         </a>
+      </div>
+
+      <div className={style.toast}>
+        {showSnackbar && (
+          <figure className={style.notification}>
+            <div className={style.notification__body}>
+              <div className={style.notification__description}>
+                <div className={style.icon__wrapper}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    strokeWidth="2"
+                    stroke="currentColor"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M5 12l5 5l10 -10"></path>
+                  </svg>
+                </div>
+                {snackbarMessage}
+              </div>
+            </div>
+            <div className={style.notification__progress}></div>
+          </figure>
+        )}
       </div>
 
       <Footer />

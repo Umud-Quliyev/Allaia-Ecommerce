@@ -16,6 +16,8 @@ function Main_Header(props) {
   const [hoveredProduct, setHoveredProduct] = useState(null);
   const debouncedInputText = useDebounce(inputText, 500);
   const [favoriteModalIsOpen, setFavoriteModalIsOpen] = useState(false);
+  const [cartModalIsOpen, setCartModalIsOpen] = useState(false);
+  const [addedProduct, setAddedProduct] = useState(null);
 
   const inputHandler = (e) => {
     const lowerCase = e.target.value.toLowerCase();
@@ -62,6 +64,15 @@ function Main_Header(props) {
 
   const closeFavoriteModal = () => {
     setFavoriteModalIsOpen(false);
+  };
+
+  const openCartModal = (product) => {
+    setAddedProduct(product);
+    setCartModalIsOpen(true);
+  };
+
+  const closeCartModal = () => {
+    setCartModalIsOpen(false);
   };
 
   const toggleMenu = () => {
@@ -177,8 +188,83 @@ function Main_Header(props) {
               Close
             </button>
           </Modal>
-          <MdOutlineDarkMode />
-          <AiOutlineShoppingCart />
+          <AiOutlineShoppingCart onClick={openCartModal} />
+          <Modal
+            isOpen={cartModalIsOpen}
+            onRequestClose={closeCartModal}
+            style={customStyles}
+          >
+            <div>
+              <h2>Added Products</h2>
+              <div className={style.favoriteproduct}>
+                {props.addedCart && props.addedCart.length > 0 ? (
+                  props.addedCart.map((addedCartProduct, index) => (
+                    <div
+                      className={style.product_card}
+                      key={addedCartProduct.id}
+                    >
+                      <div
+                        className={style.product_thumb}
+                        onMouseEnter={() => setHoveredProduct(index)}
+                        onMouseLeave={() => setHoveredProduct(null)}
+                      >
+                        <img
+                          src={
+                            hoveredProduct === index
+                              ? addedCartProduct.images.image2
+                              : addedCartProduct.images.image1
+                          }
+                          alt=""
+                        />
+                      </div>
+                      <div className={style.product_details}>
+                        <div className={style.d_title}>
+                          <span className={style.product_catagory}>
+                            {addedCartProduct.brand}
+                          </span>
+                          <p>Ratings: {addedCartProduct.rating}</p>
+                        </div>
+
+                        <h4>
+                          <a href="">{addedCartProduct.name}</a>
+                        </h4>
+                        <p>{addedCartProduct.description}</p>
+                        <div className={style.product_bottom_details}>
+                          <div className={style.product_price}>
+                            <span>
+                              ${addedCartProduct.price}.00
+                              <sup>
+                                <small>
+                                  {addedCartProduct.discountPercentage}
+                                </small>
+                              </sup>
+                            </span>
+                          </div>
+                          <div className={style.product_links}>
+                            <a href="">
+                              <AiOutlineShoppingCart />
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                      <div className={style.details}>
+                        <Link to={`/product_detail/${addedCartProduct.id}`}>
+                          <button className={style.moreinfo}>
+                            More info..
+                          </button>
+                        </Link>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <p>No favorite products yet.</p>
+                )}
+              </div>
+            </div>
+            <button onClick={closeCartModal} className={style.close}>
+              Close
+            </button>
+          </Modal>
           <MdMenu onClick={toggleMenu} className={style.menuIcon} />
         </span>
       </div>
