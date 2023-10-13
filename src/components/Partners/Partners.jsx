@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./Partners.module.css";
+import style from "./Partners.module.scss";
 
 function Partners() {
   return (

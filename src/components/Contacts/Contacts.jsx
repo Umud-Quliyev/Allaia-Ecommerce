@@ -1,6 +1,6 @@
 import React from "react";
 import Main_Header from "../Main_Header/Main_Header";
-import style from "./Contacts.module.css";
+import style from "./Contacts.module.scss";
 import Footer from "../Footer/Footer";
 import { TfiSupport } from "react-icons/tfi";
 import { FaMapMarkedAlt } from "react-icons/fa";

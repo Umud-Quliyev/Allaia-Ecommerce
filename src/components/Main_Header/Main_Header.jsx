@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import style from "./Main_Header.module.css";
+import style from "./Main_Header.module.scss";
 import { MdFavorite, MdOutlineDarkMode, MdMenu } from "react-icons/md";
 import { Link } from "react-router-dom";
-import Product_Details from "../Products_Details/Product_Details";
-import Products from "../Products/Products";
 import Modal from "react-modal";
 import { useDebounce } from "usehooks-ts";
 import { AiOutlineShoppingCart } from "react-icons/ai";
@@ -170,13 +168,6 @@ function Main_Header(props) {
                           </div>
                         </div>
                       </div>
-                      <div className={style.details}>
-                        <Link to={`/product_detail/${favoriteProduct.id}`}>
-                          <button className={style.moreinfo}>
-                            More info..
-                          </button>
-                        </Link>
-                      </div>
                     </div>
                   ))
                 ) : (
@@ -247,23 +238,21 @@ function Main_Header(props) {
                           </div>
                         </div>
                       </div>
-                      <div className={style.details}>
-                        <Link to={`/product_detail/${addedCartProduct.id}`}>
-                          <button className={style.moreinfo}>
-                            More info..
-                          </button>
-                        </Link>
-                      </div>
                     </div>
                   ))
                 ) : (
-                  <p>No favorite products yet.</p>
+                  <p>No added products yet.</p>
                 )}
               </div>
             </div>
-            <button onClick={closeCartModal} className={style.close}>
-              Close
-            </button>
+            <div className={style.buttons}>
+              <button onClick={closeCartModal} className={style.close}>
+                Close
+              </button>
+              <button onClick={closeCartModal} className={style.close}>
+                Submit
+              </button>
+            </div>
           </Modal>
           <MdMenu onClick={toggleMenu} className={style.menuIcon} />
         </span>

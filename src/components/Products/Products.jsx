@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Main_Header from "../Main_Header/Main_Header";
 import Footer from "../Footer/Footer";
-import style from "./Products.module.css";
+import style from "./Products.module.scss";
 import { AiFillHeart, AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
@@ -136,6 +136,7 @@ function Products() {
         onSearch={handleSearch}
         favorites={favorites}
         addedCart={addedCart}
+        updateFavorites={setFavorites}
       />
 
       <div className={style.mainn}>

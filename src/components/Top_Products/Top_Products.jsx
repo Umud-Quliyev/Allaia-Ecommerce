@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import style from "./Top_Products.module.css";
+import style from "./Top_Products.module.scss";
 import { AiFillHeart, AiFillStar, AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 

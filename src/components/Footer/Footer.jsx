@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./Footer.module.css";
+import style from "./Footer.module.scss";
 import {
   AiFillFacebook,
   AiFillInstagram,
@@ -10,7 +10,6 @@ import {
   AiTwotoneHome,
 } from "react-icons/ai";
 import { BsFillTelephoneFill } from "react-icons/bs";
-import { Accordion, AccordionItem } from "@szhsin/react-accordion";
 
 function Footer() {
   return (

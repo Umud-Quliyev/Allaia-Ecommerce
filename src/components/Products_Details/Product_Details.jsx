@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import style from "./Product_Details.module.css";
+import style from "./Product_Details.module.scss";
 import { AiFillStar, AiOutlineRight } from "react-icons/ai";
 import Main_Header from "../Main_Header/Main_Header";
 import Footer from "../Footer/Footer";

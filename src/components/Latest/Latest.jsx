@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./Latest.module.css";
+import style from "./Latest.module.scss";
 
 function Latest() {
   return (
