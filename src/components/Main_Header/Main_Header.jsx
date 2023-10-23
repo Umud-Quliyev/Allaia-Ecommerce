@@ -8,7 +8,6 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 
 function Main_Header(props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [modalIsOpen, setIsOpen] = useState(false);
   const [data, setData] = useState([]);
   const [inputText, setInputText] = useState("");
   const [hoveredProduct, setHoveredProduct] = useState(null);
@@ -180,6 +179,10 @@ function Main_Header(props) {
             </button>
           </Modal>
           <AiOutlineShoppingCart onClick={openCartModal} />
+          <p className={style.shoppingsize}>
+            {props.addedCart && props.addedCart.length}
+          </p>
+
           <Modal
             isOpen={cartModalIsOpen}
             onRequestClose={closeCartModal}
@@ -249,9 +252,11 @@ function Main_Header(props) {
               <button onClick={closeCartModal} className={style.close}>
                 Close
               </button>
-              <button onClick={closeCartModal} className={style.close}>
-                Submit
-              </button>
+              {
+                <button onClick={closeCartModal} className={style.close}>
+                  Submit
+                </button>
+              }
             </div>
           </Modal>
           <MdMenu onClick={toggleMenu} className={style.menuIcon} />

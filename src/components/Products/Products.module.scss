@@ -70,6 +70,7 @@
 
 .product_card:hover .product_thumb img {
   transform: scale(1.05);
+  transform: rotateY(180deg);
 }
 
 .product_thumb {

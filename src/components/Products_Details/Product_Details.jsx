@@ -5,13 +5,16 @@ import { AiFillStar, AiOutlineRight } from "react-icons/ai";
 import Main_Header from "../Main_Header/Main_Header";
 import Footer from "../Footer/Footer";
 import Select from "react-select";
+import { useDispatch, useSelector } from "react-redux";
+import { decrease, increase } from "../../store/counterSlice";
 
 function Product_Details() {
   const { productId } = useParams();
   const [hoveredProduct, setHoveredProduct] = useState(false);
   const [productsDetails, setProductsDetails] = useState({});
   const [selectedOption, setSelectedOption] = useState(null);
-  const [count, setCount] = useState(0);
+  const dispatch = useDispatch();
+  const count = useSelector((state) => state.counter.value);
 
   const options = [
     { value: "s", label: "Small (S)" },
@@ -116,11 +119,11 @@ function Product_Details() {
             <div className={style.quantity}>
               <h1>QUANTITY</h1>
               <div className={style.counter}>
-                <button onClick={decrement}>
+                <button onClick={() => dispatch(decrease())}>
                   <span>-</span>
                 </button>
                 <p>{count}</p>
-                <button onClick={increment}>
+                <button onClick={() => dispatch(increase())}>
                   <span>+</span>
                 </button>
               </div>

@@ -5,15 +5,18 @@ import style from "./Products.module.scss";
 import { AiFillHeart, AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
+import { addToFavorites } from "../../store/favoriteSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 function Products() {
   const [products, setProducts] = useState([]);
-  const [hoveredProduct, setHoveredProduct] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isFavorite, setIsFavorite] = useState(false);
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
+  const favorites = useSelector((state) => state.favorites);
+  const dispatch = useDispatch();
   const itemsPerPage = 3;
   const [filters, setFilters] = useState({
     category: null,
@@ -42,18 +45,15 @@ function Products() {
     setCurrentPage(1);
   };
 
-  const [favorites, setFavorites] = useState([]);
+  const [favorite, setFavorites] = useState([]);
 
   const handleAddToFavorites = (product) => {
     if (!favorites.some((fav) => fav.id === product.id)) {
-      setFavorites([...favorites, product]);
-      setIsFavorite(true);
+      dispatch(addToFavorites(product));
       setSnackbarMessage("Product added to favorites");
       setShowSnackbar(true);
     } else {
-      const updatedFavorites = favorites.filter((fav) => fav.id !== product.id);
-      setFavorites(updatedFavorites);
-      setIsFavorite(false);
+      dispatch(removeFromFavorites(product));
       setSnackbarMessage("Product removed from favorites");
       setShowSnackbar(true);
     }
@@ -85,7 +85,7 @@ function Products() {
   const filterProducts = () => {
     let filteredData = [...products];
 
-    if (filters.category) {
+    if (filters.category !== null) {
       filteredData = filteredData.filter(
         (product) => product.category === filters.category
       );
@@ -153,19 +153,8 @@ function Products() {
 
           {displayedProducts.map((info, index) => (
             <div className={style.product_card} key={info.id}>
-              <div
-                className={style.product_thumb}
-                onMouseEnter={() => setHoveredProduct(index)}
-                onMouseLeave={() => setHoveredProduct(null)}
-              >
-                <img
-                  src={
-                    hoveredProduct === index
-                      ? info.images.image2
-                      : info.images.image1
-                  }
-                  alt=""
-                />
+              <div className={style.product_thumb}>
+                <img src={info.images.image1} alt="" />
               </div>
               <div className={style.product_details}>
                 <div className={style.d_title}>
