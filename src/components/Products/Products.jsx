@@ -8,6 +8,15 @@ import Sidebar from "../Sidebar/Sidebar";
 import { addToFavorites } from "../../store/favoriteSlice";
 import { useDispatch, useSelector } from "react-redux";
 
+function saveCartItems(cartItems) {
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+}
+
+function loadCartItems() {
+  const cartItems = localStorage.getItem("cartItems");
+  return cartItems ? JSON.parse(cartItems) : [];
+}
+
 function Products() {
   const [products, setProducts] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
@@ -59,16 +68,24 @@ function Products() {
     }
   };
 
-  const [addedCart, setAddedCart] = useState([]);
+  function loadCartItems() {
+    const cartItems = localStorage.getItem("cartItems");
+    return cartItems ? JSON.parse(cartItems) : [];
+  }
+
+  const [addedCart, setAddedCart] = useState(loadCartItems());
 
   const handleAddToAddedCart = (product) => {
     if (!addedCart.some((add) => add.id === product.id)) {
-      setAddedCart([...addedCart, product]);
+      const updatedCart = [...addedCart, product];
+      setAddedCart(updatedCart);
+      saveCartItems(updatedCart);
       setSnackbarMessage("Product added to cart");
       setShowSnackbar(true);
     } else {
       const updatedAdded = addedCart.filter((add) => add.id !== product.id);
       setAddedCart(updatedAdded);
+      saveCartItems(updatedAdded);
       setSnackbarMessage("Product removed from cart");
       setShowSnackbar(true);
     }

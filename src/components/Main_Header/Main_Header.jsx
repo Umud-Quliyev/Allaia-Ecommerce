@@ -6,6 +6,11 @@ import Modal from "react-modal";
 import { useDebounce } from "usehooks-ts";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
+function loadCartItems() {
+  const cartItems = localStorage.getItem("cartItems");
+  return cartItems ? JSON.parse(cartItems) : [];
+}
+
 function Main_Header(props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [data, setData] = useState([]);
@@ -15,6 +20,7 @@ function Main_Header(props) {
   const [favoriteModalIsOpen, setFavoriteModalIsOpen] = useState(false);
   const [cartModalIsOpen, setCartModalIsOpen] = useState(false);
   const [addedProduct, setAddedProduct] = useState(null);
+  const [addedCart, setAddedCart] = useState(loadCartItems());
 
   const inputHandler = (e) => {
     const lowerCase = e.target.value.toLowerCase();
