@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import style from "./Carousel.module.scss";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const images = [
   {
@@ -40,8 +42,14 @@ function Carousel() {
     setCurrentSlide(index);
   };
 
+  useEffect(() => {
+    Aos.init({
+      duration: 2000,
+    });
+  }, []);
+
   return (
-    <div className={style.carousel}>
+    <div data-aos="zoom-out-down" className={style.carousel}>
       <div className={style.opacity}></div>
       <img src={images[currentSlide].url} alt={`Slide ${currentSlide + 1}`} />
       <div className={style.title}>

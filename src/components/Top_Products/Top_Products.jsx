@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import style from "./Top_Products.module.scss";
 import { AiFillHeart, AiFillStar, AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 function Top_Products() {
   const [products, setProducts] = useState([]);
@@ -17,8 +19,14 @@ function Top_Products() {
       });
   }, []);
 
+  useEffect(() => {
+    Aos.init({
+      duration: 1500,
+    });
+  }, []);
+
   return (
-    <div>
+    <div data-aos="zoom-in">
       <div className={style.title}>
         <h2>Top Selling</h2>
         <span>Products</span>

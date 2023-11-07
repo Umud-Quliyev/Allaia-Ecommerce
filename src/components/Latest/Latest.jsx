@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from "./Latest.module.scss";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 function Latest() {
+  useEffect(() => {
+    Aos.init({
+      duration: 1500,
+    });
+  }, []);
   return (
-    <div>
+    <div data-aos="zoom-in">
       <div className={style.title}>
         <h2>Latest News</h2>
         <span>Blog</span>

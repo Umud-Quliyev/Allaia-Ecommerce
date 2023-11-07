@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from "./Banners.module.scss";
+import Aos from "aos";
 
 function Banners() {
+  useEffect(() => {
+    Aos.init({
+      duration: 1500,
+    });
+  }, []);
   return (
-    <div className={style.banners}>
+    <div data-aos="fade-right" className={style.banners}>
       <ul>
         <li>
           <img src="http://www.ansonika.com/allaia/img/banner_1.jpg" alt="" />
