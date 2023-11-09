@@ -20,7 +20,7 @@ function Contacts() {
       <Main_Header onSearch={handleSearch} />
 
       <div className={style.contact}>
-        <div data-aos="fade-down">
+        <div data-aos="zoom-in">
           <div className={style.contact_title}>
             <h1>Contact Allalia</h1>
             <p>
@@ -55,8 +55,8 @@ function Contacts() {
             </div>
           </div>
         </div>
-        <div className={style.drop}>
-          <div data-aos="fade-right" className={style.form}>
+        <div data-aos="zoom-in" className={style.drop}>
+          <div className={style.form}>
             <h1>Drop Us a Line</h1>
             <input
               className={style.form_input}
@@ -75,7 +75,7 @@ function Contacts() {
             />
             <button>Submit</button>
           </div>
-          <div data-aos="fade-left" className={style.map}>
+          <div className={style.map}>
             <iframe
               width="100%"
               height="370"
