@@ -5,26 +5,19 @@ import style from "./Products.module.scss";
 import { AiFillHeart, AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
-import { addToFavorites } from "../../store/favoriteSlice";
+import { addToFavorites, removeFromFavorites } from "../../store/favoriteSlice";
 import { useDispatch, useSelector } from "react-redux";
-
-function saveCartItems(cartItems) {
-  localStorage.setItem("cartItems", JSON.stringify(cartItems));
-}
-
-function loadCartItems() {
-  const cartItems = localStorage.getItem("cartItems");
-  return cartItems ? JSON.parse(cartItems) : [];
-}
+import Aos from "aos";
+import { addToCart, removeFromCart } from "../../store/cartSlice";
 
 function Products() {
   const [products, setProducts] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [isFavorite, setIsFavorite] = useState(false);
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const favorites = useSelector((state) => state.favorites);
+  const addedCart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const itemsPerPage = 3;
   const [filters, setFilters] = useState({
@@ -49,45 +42,46 @@ function Products() {
     setSearchResults(filterProducts());
   }, [products, filters]);
 
+  useEffect(() => {
+    Aos.init({
+      duration: 1500,
+    });
+  }, []);
+
   const handleSearch = (filteredData) => {
     setSearchResults(filteredData);
     setCurrentPage(1);
   };
 
-  const [favorite, setFavorites] = useState([]);
-
-  const handleAddToFavorites = (product) => {
-    if (!favorites.some((fav) => fav.id === product.id)) {
-      dispatch(addToFavorites(product));
-      setSnackbarMessage("Product added to favorites");
-      setShowSnackbar(true);
-    } else {
-      dispatch(removeFromFavorites(product));
-      setSnackbarMessage("Product removed from favorites");
-      setShowSnackbar(true);
-    }
+  const showNotification = (message) => {
+    setSnackbarMessage(message);
+    setShowSnackbar(true);
+    setTimeout(() => {
+      setShowSnackbar(false);
+    }, 3000);
   };
 
-  function loadCartItems() {
-    const cartItems = localStorage.getItem("cartItems");
-    return cartItems ? JSON.parse(cartItems) : [];
-  }
+  const handleAddToFavorites = (product) => {
+    const isFavorite = favorites.some((fav) => fav.id === product.id);
 
-  const [addedCart, setAddedCart] = useState(loadCartItems());
+    if (!isFavorite) {
+      dispatch(addToFavorites(product));
+      showNotification("Product added to favorites");
+    } else {
+      dispatch(removeFromFavorites(product));
+      showNotification("Product removed from favorites");
+    }
+  };
 
   const handleAddToAddedCart = (product) => {
     if (!addedCart.some((add) => add.id === product.id)) {
       const updatedCart = [...addedCart, product];
-      setAddedCart(updatedCart);
-      saveCartItems(updatedCart);
-      setSnackbarMessage("Product added to cart");
-      setShowSnackbar(true);
+      dispatch(addToCart(product));
+      showNotification("Product added to cart");
     } else {
       const updatedAdded = addedCart.filter((add) => add.id !== product.id);
-      setAddedCart(updatedAdded);
-      saveCartItems(updatedAdded);
-      setSnackbarMessage("Product removed from cart");
-      setShowSnackbar(true);
+      dispatch(removeFromCart(product));
+      showNotification("Product removed from cart");
     }
   };
 
@@ -153,7 +147,6 @@ function Products() {
         onSearch={handleSearch}
         favorites={favorites}
         addedCart={addedCart}
-        updateFavorites={setFavorites}
       />
 
       <div className={style.mainn}>
@@ -161,7 +154,7 @@ function Products() {
           <Sidebar handleChange={handleFilterChange} />
         </div>
 
-        <div className={style.products}>
+        <div data-aos="fade-down" className={style.products}>
           {displayedProducts.length === 0 && (
             <div className={style.not_found}>
               <h1>Not Found</h1>

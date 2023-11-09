@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Main_Header from "../Main_Header/Main_Header";
 import style from "./Contacts.module.scss";
 import Footer from "../Footer/Footer";
 import { TfiSupport } from "react-icons/tfi";
 import { FaMapMarkedAlt } from "react-icons/fa";
 import { BsBoxSeam } from "react-icons/bs";
+import Aos from "aos";
 
 function Contacts() {
   function handleSearch(filteredData) {}
+  useEffect(() => {
+    Aos.init({
+      duration: 1500,
+    });
+  }, []);
+
   return (
     <div>
       <Main_Header onSearch={handleSearch} />
 
       <div className={style.contact}>
-        <div>
+        <div data-aos="fade-down">
           <div className={style.contact_title}>
             <h1>Contact Allalia</h1>
             <p>
@@ -49,7 +56,7 @@ function Contacts() {
           </div>
         </div>
         <div className={style.drop}>
-          <div className={style.form}>
+          <div data-aos="fade-right" className={style.form}>
             <h1>Drop Us a Line</h1>
             <input
               className={style.form_input}
@@ -68,7 +75,7 @@ function Contacts() {
             />
             <button>Submit</button>
           </div>
-          <div className={style.map}>
+          <div data-aos="fade-left" className={style.map}>
             <iframe
               width="100%"
               height="370"

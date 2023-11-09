@@ -9,6 +9,7 @@ function Latest() {
       duration: 1500,
     });
   }, []);
+
   return (
     <div data-aos="zoom-in">
       <div className={style.title}>

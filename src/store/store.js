@@ -7,6 +7,6 @@ export default configureStore({
   reducer: {
     counter: counterReducer,
     favorites: favoriteReducer,
-    added: cartReducer,
+    cart: cartReducer,
   },
 });

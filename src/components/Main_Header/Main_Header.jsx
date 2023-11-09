@@ -93,8 +93,15 @@ function Main_Header(props) {
           <li>
             <Link to={"/"}>Home</Link>
           </li>
-          <li>
-            <a href="">Category</a>
+          <li className={style.dropdown}>
+            <a className={style.dropbtn} href="">
+              Category
+            </a>
+            <div className={style.dropdown_content}>
+              <a href="#">Example 1</a>
+              <a href="#">Example 2</a>
+              <a href="#">Example 3</a>
+            </div>
           </li>
           <li>
             <Link to={"/contact"}>Contact</Link>

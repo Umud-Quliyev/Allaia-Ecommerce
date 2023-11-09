@@ -7,6 +7,7 @@ import Footer from "../Footer/Footer";
 import Select from "react-select";
 import { useDispatch, useSelector } from "react-redux";
 import { decrease, increase } from "../../store/counterSlice";
+import Aos from "aos";
 
 function Product_Details() {
   const { productId } = useParams();
@@ -22,6 +23,12 @@ function Product_Details() {
     { value: "l", label: "L" },
     { value: "xl", label: "XL" },
   ];
+
+  useEffect(() => {
+    Aos.init({
+      duration: 1500,
+    });
+  }, []);
 
   useEffect(() => {
     fetch(
@@ -58,7 +65,7 @@ function Product_Details() {
       <Main_Header onSearch={handleSearch} />
 
       <div className={style.productsdetails}>
-        <div className={style.detailtitle}>
+        <div data-aos="fade-down" className={style.detailtitle}>
           <ul>
             <li>
               <a href="">Home</a> <AiOutlineRight />
@@ -75,7 +82,7 @@ function Product_Details() {
           <img src={productsDetails.images.image1} alt="" />
         </div>
         <div className={style.description}>
-          <div className={style.desc}>
+          <div data-aos="fade-right" className={style.desc}>
             <div className={style.rating}>
               <AiFillStar />
               <AiFillStar />
@@ -89,7 +96,7 @@ function Product_Details() {
             <small>SKU: MTKRY-001</small>
             <p>{productsDetails.description}</p>
           </div>
-          <div className={style.select}>
+          <div data-aos="fade-left" className={style.select}>
             <div className={style.color}>
               <h1>Color</h1>
               <ul>
@@ -137,13 +144,19 @@ function Product_Details() {
                 </span>
               </div>
               <div className={style.add}>
-                <button>Add To Cart</button>
+                <button
+                  onClick={() => {
+                    props.onAddToCart(productsDetails);
+                  }}
+                >
+                  Add To Cart
+                </button>
               </div>
             </div>
           </div>
         </div>
         <div className={style.details}>
-          <div className={style.detail_desc}>
+          <div data-aos="fade-right" className={style.detail_desc}>
             <h1>Details</h1>
             <p>
               Lorem ipsum dolor sit amet, in eleifend
@@ -166,7 +179,7 @@ function Product_Details() {
               nobis viderer vivendo ex has.
             </p>
           </div>
-          <div className={style.specifications}>
+          <div data-aos="fade-left" className={style.specifications}>
             <h1>Specifications</h1>
             <table>
               <tbody>
