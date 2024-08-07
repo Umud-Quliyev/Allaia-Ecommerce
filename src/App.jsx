@@ -7,6 +7,12 @@ import Partners from "./components/Partners/Partners";
 import Footer from "./components/Footer/Footer";
 import Top_Products from "./components/Top_Products/Top_Products";
 import Latest from "./components/Latest/Latest";
+import Hotjar from '@hotjar/browser';
+
+const siteId = 5086880;
+const hotjarVersion = 6;
+
+Hotjar.init(siteId, hotjarVersion);
 
 function App() {
   function handleSearch(filteredData) {}
